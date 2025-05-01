@@ -6,10 +6,12 @@ Ferramenta que permite que a versão correta do Revit seja aberta ao abrir os ar
 
 ## Instalação
 
+1. Baixe a última versão do rvh.exe [nessa página](https://github.com/qgustavor/rvh/actions)
+1. Salve em algum lugar (pasta de documentos, por exemplo)
 1. Abra o regedit.exe
-2. Abra a chave `HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Revit.Project\\shell\\open\\command`
-3. Coloque o caminho deste aplicativo no lugar do Revit'
-4. Teste abrindo algum projeto do Revit, ele irá detectar a versão do arquivo e abrir a versão apropriada do Revit.
+1. Abra a chave `HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Revit.Project\\shell\\open\\command`
+1. Coloque o caminho do aplicativo onde você salvou no lugar do Revit
+1. Teste abrindo algum projeto do Revit, ele irá detectar a versão do arquivo e abrir a versão apropriada do Revit.
 
 ## Funções implementadas
 
