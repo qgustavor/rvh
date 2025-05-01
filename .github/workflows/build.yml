@@ -1,0 +1,22 @@
+name: Build
+
+on:
+  workflow_dispatch:
+  create:
+    tags:
+      - v*
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install
+      - run: bun run build
+      - run: npm test
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rvh.exe
+          path: ./rvh.exe

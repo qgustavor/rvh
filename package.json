@@ -1,0 +1,25 @@
+{
+  "name": "revit-version-handler",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "eslint --fix",
+    "build": "bun build --compile --target=bun-windows-x64 --outfile rvh --minify ./main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "description": "",
+  "dependencies": {
+    "@phi-ag/rvt": "^0.1.0",
+    "boxen": "^8.0.1",
+    "prompts": "^2.4.2",
+    "yoctocolors": "^2.1.1"
+  },
+  "devDependencies": {
+    "bun": "*",
+    "eslint": "^9.25.1",
+    "neostandard": "^0.12.1"
+  }
+}
