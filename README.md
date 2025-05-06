@@ -4,6 +4,8 @@
 
 Ferramenta que permite que a versão correta do Revit seja aberta ao abrir os arquivos, dispensando ter que monitorar (seja no nome do arquivo ou fora dele) a versão utilizada.
 
+Baixe o rvh.exe aqui: https://github.com/qgustavor/rvh/releases/latest
+
 ## Instalação substituindo o comando de abertura
 
 1. Abra o regedit.exe

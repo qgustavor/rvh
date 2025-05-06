@@ -15,12 +15,12 @@
   "dependencies": {
     "@phi-ag/rvt": "^0.1.0",
     "boxen": "^8.0.1",
-    "bumpp": "^10.1.0",
     "prompts": "^2.4.2",
     "yoctocolors": "^2.1.1"
   },
   "devDependencies": {
     "bun": "*",
+    "bumpp": "^10.1.0",
     "eslint": "^9.25.1",
     "neostandard": "^0.12.1"
   }
