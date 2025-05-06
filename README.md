@@ -9,7 +9,7 @@ Baixe o rvh.exe aqui: https://github.com/qgustavor/rvh/releases/latest
 ## Instalação substituindo o comando de abertura
 
 1. Abra o regedit.exe
-2. Abra a chave `HKEY_CLASSES_ROOT\\Revit.Project\\shell\\open\\command`
+2. Abra a chave `HKEY_CLASSES_ROOT\Revit.Project\shell\open\command`
 3. No `(default)` coloque o caminho para o "rvh.exe" seguido de `"%1"`. Exemplo: `"C:\Usuário\Documentos\rvh.exe" "%1"`
 4. Teste abrindo algum projeto do Revit, ele irá detectar a versão do arquivo e abrir a versão apropriada do Revit.
 
@@ -18,7 +18,7 @@ Baixe o rvh.exe aqui: https://github.com/qgustavor/rvh/releases/latest
 Caso queira é possível configurar o Windows adicionando mais uma opção ao menu, mantendo a funcionalidade original e reduzindo o risco de problemas
 
 1. Abra o regedit.exe
-2. Abra a chave `HKEY_CLASSES_ROOT\\Revit.Project\\shell`
+2. Abra a chave `HKEY_CLASSES_ROOT\Revit.Project\shell`
 3. Crie uma chave chamada `rvh`
 4. No `(default)` coloque `Abrir (detectar versão)`
 5. Dentro da nova chave crie uma chave chamada `command`
