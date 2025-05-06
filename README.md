@@ -27,7 +27,7 @@ Caso queira é possível configurar o Windows adicionando mais uma opção ao me
 
 ## Funções implementadas
 
-- Detecção da versão do arquivo Revit carregado usando (@phi-ag/rvt)[https://github.com/phi-ag/rvt]
+- Detecção da versão do arquivo Revit carregado usando [@phi-ag/rvt](https://github.com/phi-ag/rvt)
 - Detecção das versões do Revit instaladas na máquina usando o comando `reg` do Windows
 - Abertura automática do Revit caso a versão exata do arquivo seja encontrada
 - Caso a versão do arquivo não seja encontrada, o programa procura versões mais novas e, existindo, pergunta ao usuário se deseja usar alguma delas
