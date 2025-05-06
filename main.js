@@ -6,6 +6,7 @@ import colors from 'yoctocolors'
 import prompts from 'prompts'
 import boxen from 'boxen'
 import path from 'path'
+import pkgInfo from './package.json' with { type: 'json' }
 
 // TODO handle locales
 const execFilePromise = promisify(execFile)
@@ -20,18 +21,16 @@ async function main () {
 
   // Ignore arguments starting with -- and /
   const filePath = process.argv.slice(2).find(e => {
-    return !e.startsWith('--') && e.startsWith('/')
+    return !e.startsWith('--') && !e.startsWith('/')
   })
 
-  process.title = 'Revit Version Handler'
+  process.title = 'Revit Version Handler ' + pkgInfo.version
 
   if (!filePath) {
     console.log(colors.white(boxen('Você precisa configurar para abrir arquivos .rvt com esse programa', boxenSettings)))
-    console.log('1. Abra o regedit.exe')
-    console.log('2. Abra a chave HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Revit.Project\\shell\\open\\command')
-    console.log('3. Coloque o caminho deste aplicativo no lugar do Revit')
-    console.log('4. Teste abrindo algum projeto do Revit, ele irá detectar a versão do arquivo e abrir a versão apropriada do Revit.')
-    console.log('\nCriado por Gustavo Rodrigues (https://qgustavor.tk)\n')
+    console.log('Criado por Gustavo Rodrigues (https://qgustavor.tk)')
+    console.log('Documentação: https://github.com/qgustavor/rvh')
+    console.log(`Versão: ${pkgInfo.version}\n`)
 
     await prompts({
       type: 'invisible',

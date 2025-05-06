@@ -4,7 +4,8 @@
   "main": "main.js",
   "scripts": {
     "test": "eslint --fix",
-    "build": "bun build --compile --target=bun-windows-x64 --outfile rvh --minify ./main.js"
+    "build": "bun build --compile --target=bun-windows-x64 --outfile rvh --minify --bytecode ./main.js",
+    "bump": "bunx bumpp"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +15,7 @@
   "dependencies": {
     "@phi-ag/rvt": "^0.1.0",
     "boxen": "^8.0.1",
+    "bumpp": "^10.1.0",
     "prompts": "^2.4.2",
     "yoctocolors": "^2.1.1"
   },
