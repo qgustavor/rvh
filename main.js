@@ -7,6 +7,7 @@ import prompts from 'prompts'
 import boxen from 'boxen'
 import path from 'path'
 import pkgInfo from './package.json' with { type: 'json' }
+import fs from 'fs'
 
 // TODO handle locales
 const execFilePromise = promisify(execFile)
@@ -111,7 +112,7 @@ async function main () {
       { title: 'Cancelar', value: -1 },
       ...newerVersions.map(versionInfo => ({
         title: `Abrir na versão ${versionInfo[0]}`,
-        description: 'o arquivo será atualizado, salve com outro nome',
+        description: 'o arquivo será atualizado',
         value: versionInfo
       }))
     ]
@@ -122,7 +123,27 @@ async function main () {
     return
   }
 
-  await openRevit(answer.confirm, filePath)
+  const makeCopy = (await prompts({
+    type: 'toggle',
+    name: 'copy',
+    message: 'Fazer uma cópia do arquivo antes de abrir na nova versão?',
+    initial: true,
+    active: 'Sim',
+    inactive: 'Não'
+  })).copy
+
+  let finalFilePath = filePath
+  if (makeCopy) {
+    const oldVersion = fileVersion
+    const newVersion = answer.confirm[0]
+    const newFilePath = getNewFileName(filePath, oldVersion, newVersion)
+    if (!fs.existsSync(newFilePath)) {
+      await fs.promises.copyFile(filePath, newFilePath)
+    }
+    finalFilePath = newFilePath
+  }
+
+  await openRevit(answer.confirm, finalFilePath)
 }
 
 function openRevit ([versionNumber, versionFolder], filePath) {
@@ -132,6 +153,19 @@ function openRevit ([versionNumber, versionFolder], filePath) {
     stdio: 'ignore',
     detached: true
   }).unref()
+}
+
+function getNewFileName (filePath, oldVersion, newVersion) {
+  const dir = path.dirname(filePath)
+  const ext = path.extname(filePath)
+  const base = path.basename(filePath, ext)
+  const versionRegex = new RegExp(`([_\\- ]?)${oldVersion}(?=[^\\d]|$)`)
+  if (versionRegex.test(base)) {
+    const newBase = base.replace(versionRegex, `$1${newVersion}`)
+    return path.join(dir, newBase + ext)
+  } else {
+    return path.join(dir, `${base}_${newVersion}${ext}`)
+  }
 }
 
 main().catch(error => {
